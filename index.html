@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CHAVE DA VIRADA – Ritual Anticaos • Método 3x3 (Fixed)</title>
+<meta name="theme-color" content="#0b0b0e">
+<style>
+  /* Reset simples */
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background: radial-gradient(80% 50% at 50% 0%, rgba(212,175,55,0.06), transparent 60%), #0b0b0e;
+    color: #f7f7fb;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Ubuntu, Cantarell, Noto Sans, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; height: auto; }
+
+  /* Tokens */
+  :root {
+    --surface: #121218;
+    --muted: #a9abb3;
+    --gold: #d4af37;
+    --ring: rgba(212,175,55,.45);
+    --radius: 20px;
+    --shadow: 0 24px 60px rgba(0,0,0,.45);
+    --maxw: 1120px;
+  }
+
+  .header {
+    position: sticky; top: 0; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 16px 24px;
+    background: linear-gradient(180deg, rgba(11,11,14,.85), rgba(11,11,14,.55) 70%, rgba(11,11,14,0));
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255,255,255,.05);
+  }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand .name {
+    font-weight: 900; text-transform: uppercase; letter-spacing: 1.2px;
+    background: linear-gradient(90deg,#f5e6b3,#d4af37,#b8860b);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .cta-header { display: flex; gap: 12px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 18px; border-radius: 14px;
+    background: #0f0f15; border: 1px solid rgba(212,175,55,.35);
+    box-shadow: 0 8px 24px rgba(0,0,0,.35);
+  }
+  .btn:hover { background: linear-gradient(90deg,#1c1c25,#2c2c35); color: var(--gold); border-color: var(--gold); }
+
+  .container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 24px; }
+  .split { display: grid; grid-template-columns: 1.35fr 1fr; gap: 32px; align-items: center; }
+  @media (max-width: 980px){ .split { grid-template-columns: 1fr; } }
+
+  .hero { padding: 48px 0; }
+  .pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 10px; border-radius: 999px; border: 1px solid rgba(212,175,55,.35);
+    background: linear-gradient(180deg, rgba(212,175,55,.08), rgba(212,175,55,.02));
+    color: var(--gold); font-weight: 600; font-size: .9rem;
+  }
+  .h1 {
+    margin: 14px 0 8px; font-weight: 900; line-height: 1.05;
+    font-size: 3rem;
+    background: linear-gradient(90deg,#f5e6b3,#d4af37,#b8860b);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .lead { font-size: 1.2rem; color: #ead89d; max-width: 56ch; }
+  .sub { color: var(--muted); }
+
+  .trust { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-top: 14px; }
+  @media (max-width: 720px){ .trust { grid-template-columns: 1fr; } }
+  .trust .item {
+    display: flex; align-items: center; gap: 8px;
+    background: #14141b; border: 1px solid rgba(255,255,255,.08);
+    border-radius: 12px; padding: 10px 12px; color: #e8daa1;
+  }
+
+  .mock {
+    background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,0)), var(--surface);
+    border: 1px solid rgba(255,255,255,.06); border-radius: var(--radius);
+    box-shadow: var(--shadow); padding: 20px; display: grid; gap: 14px;
+  }
+  .mock .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  .section { padding: 48px 0; }
+  .title { font-weight: 800; font-size: 2rem; margin: 0 0 10px; }
+  .eyebrow { color: var(--gold); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; font-size: .9rem; }
+  .card {
+    background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0)), var(--surface);
+    border: 1px solid rgba(255,255,255,.06); border-radius: var(--radius);
+    padding: 20px; box-shadow: var(--shadow);
+  }
+  .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+  @media (max-width: 980px){ .grid-3 { grid-template-columns: 1fr; } }
+
+  .li { display: flex; align-items: flex-start; gap: 12px; }
+  .li .ico { width: 22px; height: 22px; display: grid; place-items: center; color: var(--gold); }
+
+  .twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 980px){ .twocol { grid-template-columns: 1fr; } }
+  .list { display: flex; flex-direction: column; gap: 8px; }
+  .list .row { display: flex; gap: 10px; align-items: flex-start; }
+  .list .dot { width: 18px; height: 18px; display: grid; place-items: center; border-radius: 50%; background: #14141b; border: 1px solid rgba(212,175,55,.35); color: var(--gold); font-size: .8rem; flex: 0 0 18px; margin-top: 2px; }
+
+  .testimonials { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+  .testimonial { border-left: 3px solid var(--gold); padding-left: 10px; }
+  @media (max-width: 980px){ .testimonials { grid-template-columns: 1fr; } }
+
+  .guarantee { display: flex; gap: 16px; align-items: flex-start; border-left: 4px solid var(--gold); }
+
+  .cta-final { text-align: center; }
+
+  footer { padding: 24px; text-align: center; color: var(--muted); }
+  footer .socials { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+  .sbtn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,.08); background: #14141b; }
+
+  /* === Animated Golden Gradient for CTAs === */
+  @keyframes goldSweep {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .btn {
+    background-image: linear-gradient(90deg, #b8860b, #d4af37, #f5e6b3, #d4af37, #b8860b);
+    background-size: 300% 100%;
+    animation: goldSweep 4s ease-in-out infinite;
+    color: #0b0b0e; /* text dark over golden bg */
+    border-color: rgba(212,175,55,.65);
+    box-shadow: 0 8px 24px rgba(212,175,55,.25);
+  }
+  .btn:hover {
+    filter: brightness(1.05);
+    box-shadow: 0 14px 36px rgba(212,175,55,.40), 0 0 0 3px rgba(212,175,55,.25);
+    color: #0b0b0e;
+  }
+  /* Keep secondary text buttons (like footer) readable on dark bg if any */
+  footer .sbtn { color: #f7f7fb; background:#14141b; border:1px solid rgba(255,255,255,.12); box-shadow:none; }
+  footer .sbtn:hover { box-shadow: 0 0 0 4px rgba(212,175,55,.35); border-color: rgba(212,175,55,.35); }
+
+
+  /* === Align text to top in 'Para quem é / Não é' cards === */
+  #publico .grid-2 {
+    align-items: flex-start !important;
+  }
+  #publico .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+
+  /* ======= Responsive enhancements ======= */
+  @media (max-width: 840px){
+    .container { padding: 20px; }
+    .h1 { font-size: 2.4rem; }
+    .lead { font-size: 1.05rem; }
+    .cta-header { gap: 10px; }
+  }
+  @media (max-width: 640px){
+    .header { padding: 12px 14px; flex-wrap: wrap; gap: 10px; }
+    .brand img { width: 34px; height: 34px; }
+    .brand .name { font-size: 0.95rem; letter-spacing: 1px; }
+    .cta-header { width: 100%; display: grid; grid-template-columns: 1fr; gap: 8px; }
+    .cta-header .btn { width: 100%; justify-content: center; padding: 12px; }
+    .container { padding: 16px; }
+    .h1 { font-size: 1.9rem; line-height: 1.1; }
+    .lead { font-size: 0.98rem; }
+    .pill { font-size: .8rem; padding: 5px 9px; }
+    .split { grid-template-columns: 1fr; gap: 20px; }
+    .mock { padding: 16px; }
+    .mock .row { grid-template-columns: 1fr; }
+    .card { padding: 16px; }
+    .grid-3 { grid-template-columns: 1fr; }
+    .twocol { grid-template-columns: 1fr; }
+    #comprar { flex-direction: column; }
+    #comprar .btn { width: 100%; justify-content: center; }
+    .cta-final .btn { width: 100%; }
+    footer .socials { gap: 8px; }
+    .sbtn { width: 100%; justify-content: center; }
+  }
+
+</style>
+</head>
+<body>
+  <header class="header" aria-label="Topo do site">
+    <div class="brand">
+      <img src="Logotipo da Chave da Virada.png" alt="Logotipo dourado Chave da Virada" width="40" height="40" />
+      <strong class="name">CHAVE DA VIRADA</strong>
+    </div>
+    <nav class="cta-header" aria-label="Ações principais">
+      <a class="btn" href="https://pay.kiwify.com.br/XABy9g3" data-product="ritual" data-cta="header-cta">
+      Começar minha virada
+    </a>
+      <a class="btn" href="#conteudo">Ver o que vou receber</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container split">
+        <div>
+          <span class="pill">Garantia 7 dias • Acesso imediato</span>
+          <h1 class="h1">7 minutos por dia para transformar caos em foco e disciplina</h1>
+          <p class="lead">Roteiro prático para sair da paralisia, criar clareza e agir com consistência.</p>
+          <p class="sub">Baseado em princípios de neurociência, hábitos e produtividade moderna.</p>
+          <div class="trust">
+            <div class="item">Garantia incondicional de 7 dias</div>
+            <div class="item">Acesso imediato via plataforma Kiwify</div>
+            <div class="item">Método 3x3: Foco, Energia e Pausa</div>
+          </div>
+          <div style="display:flex; gap:12px; margin-top:18px" id="comprar">
+            <a class="btn" href="https://pay.kiwify.com.br/XABy9g3" data-product="ritual" rel="noopener noreferrer">Quero desbloquear meu foco</a>
+            <a class="btn" href="#conteudo">Ver o que vou receber</a>
+          </div>
+        </div>
+        <aside class="mock">
+          <div class="sub">Visual do material</div>
+          <img src="Logotipo da Chave da Virada.png" alt="Mockup (ilustração)">
+          <div class="row">
+            <div class="card"><strong>E-book Ritual Anticaos</strong><br><span class="sub">Método 3x3 • Passo a passo prático</span></div>
+            <div class="card"><strong>Checklist Anti‑Procrastinação</strong><br><span class="sub">20 gatilhos prontos para agir</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container grid-3">
+        <div class="card">
+          <div class="eyebrow">Você não está sozinho</div>
+          <h2 class="title">Procrastinação drena sua energia</h2>
+          <p class="sub">Dias passam, tarefas acumulam e a mente fica pesada. O Ritual Anticaos quebra esse ciclo com ações rápidas que cabem em qualquer rotina.</p>
+        </div>
+        <div class="card">
+          <div class="eyebrow">Mentalidade</div>
+          <h2 class="title">Clareza antes de velocidade</h2>
+          <p class="sub">Quando você sabe exatamente o que fazer nos próximos 7 minutos, o cérebro sai do modo paralisia e entra no modo ação.</p>
+        </div>
+        <div class="card">
+          <div class="eyebrow">Praticidade</div>
+          <h2 class="title">Comece hoje, sem fricção</h2>
+          <p class="sub">Sem apps complexos. Sem teoria infinita. Um roteiro simples, direto e aplicável.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="metodo">
+      <div class="container">
+        <div class="card">
+          <div class="eyebrow">O Método</div>
+          <h2 class="title">Ritual Anticaos – Método 3x3</h2>
+          <div class="grid-3" style="margin-top:12px">
+            <div class="li">
+              <div class="ico">🔑</div>
+              <div><strong>Foco Crítico</strong><p class="sub">Defina o único passo que destrava seu dia.</p></div>
+            </div>
+            <div class="li">
+              <div class="ico">🛡️</div>
+              <div><strong>Energia Escudo</strong><p class="sub">Micro-rituais para blindar sua atenção.</p></div>
+            </div>
+            <div class="li">
+              <div class="ico">⏸️</div>
+              <div><strong>Pausa Pilar</strong><p class="sub">Resets rápidos para manter o ritmo.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="conteudo">
+      <div class="container">
+        <div class="eyebrow">Conteúdo</div>
+        <h2 class="title">O que você vai receber</h2>
+        <div class="grid-3" style="margin-top:12px">
+
+          <div class="card">
+            <h3>E‑book Ritual Anticaos (Método 3x3)</h3>
+            <p class="sub">Guia completo com instruções, exemplos práticos e plano de 7 dias.</p>
+          </div>
+
+          <div class="card" style="display:flex; flex-direction:column; gap:10px">
+            <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap">
+              <span style="display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border:1px solid rgba(212,175,55,.35); border-radius:999px; background:rgba(212,175,55,.08); color:#d4af37; font-weight:600; font-size:.85rem;">Não incluso • Oferta opcional</span>
+            </div>
+            <h3>Checklist Anti‑Procrastinação</h3>
+            <p class="sub">20 gatilhos prontos para sair da paralisia e agir imediatamente.</p>
+            <p class="sub"><em>Disponível como oferta extra no checkout — adicione com 1 clique.</em></p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="fit">
+      <div class="container">
+        <div class="eyebrow">Clareza</div>
+        <h2 class="title">Para quem é — e para quem não é</h2>
+        <div class="twocol" style="margin-top:12px">
+          <div class="card">
+            <h3>É para você se…</h3>
+            <div class="list">
+              <div class="row"><span class="dot">✅</span><p class="sub">Você procrastina e falta clareza.</p></div>
+              <div class="row"><span class="dot">✅</span><p class="sub">Quer um método simples que caiba no dia.</p></div>
+              <div class="row"><span class="dot">✅</span><p class="sub">Topa aplicar 7 minutos por dia.</p></div>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Não é para você se…</h3>
+            <div class="list">
+              <div class="row"><span class="dot">⛔</span><p class="sub">Busca fórmula mágica sem ação.</p></div>
+              <div class="row"><span class="dot">⛔</span><p class="sub">Prefere teoria sem prática.</p></div>
+              <div class="row"><span class="dot">⛔</span><p class="sub">Não quer reservar nem 7 minutos.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="beneficios">
+      <div class="container">
+        <div class="eyebrow">Resultados</div>
+        <h2 class="title">Benefícios claros</h2>
+        <div class="grid-3" style="margin-top:12px">
+          <div class="li"><div class="ico">✅</div><div><strong>Fim da procrastinação</strong><p class="sub">Entre em ação em 7 minutos.</p></div></div>
+          <div class="li"><div class="ico">✅</div><div><strong>Clareza imediata</strong><p class="sub">Saiba o que fazer agora.</p></div></div>
+          <div class="li"><div class="ico">✅</div><div><strong>Disciplina sustentável</strong><p class="sub">Hábito que cabe no seu dia.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="garantia">
+      <div class="container card guarantee">
+        <div style="font-size:1.8rem; line-height:1">🛡️</div>
+        <div>
+          <h2 class="title" style="margin:0">Garantia incondicional de 7 dias</h2>
+          <p class="sub">Teste sem risco. Se não sentir diferença, devolvemos 100%.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta-final" aria-label="Chamada final">
+      <div class="container">
+        <h2 class="title">Sua virada começa agora</h2>
+        <p class="sub">7 minutos por dia podem mudar seu ritmo.</p>
+        <div style="display:flex; gap:12px; justify-content:center; margin-top:14px">
+          <a class="btn" href="https://pay.kiwify.com.br/XABy9g3" data-product="ritual" rel="noopener noreferrer">Começar minha virada</a>
+          <a class="btn" href="#beneficios">Ver benefícios</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>CHAVE DA VIRADA • Transformando caos em clareza</div>
+    <div class="socials" aria-label="Canais oficiais">
+      <a class="sbtn" href="https://www.instagram.com/chavedaviradaofcial/" rel="noopener noreferrer">📸 Instagram</a>
+      <a class="sbtn" href="https://www.tiktok.com/@chavedaviradaoficial" rel="noopener noreferrer">🎵 TikTok</a>
+      <a class="sbtn" href="mailto:chavedaviradaoficial@gmail.com?subject=Contato%20-%20Chave%20da%20Virada" rel="noopener noreferrer">📧 Contato</a>
+    </div>
+    <small style="display:block; margin-top:8px">© <span id="year"></span> Chave da Virada. Todos os direitos reservados.</small>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  
+    // === UTM propagation for Kiwify purchase links ===
+    (function(){
+      var BASE = "https://pay.kiwify.com.br/XABy9g3";
+      var urlParams = new URLSearchParams(window.location.search);
+      var utm = new URLSearchParams();
+      // Default UTMs
+      if(!urlParams.has('utm_source')) utm.set('utm_source', 'site');
+      if(!urlParams.has('utm_medium')) utm.set('utm_medium', 'button');
+      if(!urlParams.has('utm_campaign')) utm.set('utm_campaign', 'ritual_3x3');
+      // Copy through any existing utm_* and gclid/fbclid
+      urlParams.forEach(function(v,k){
+        if(/^utm_/.test(k) || k==='gclid' || k==='fbclid') utm.set(k, v);
+      });
+      // Attach to all ritual buy buttons
+      document.querySelectorAll('a[data-product="ritual"]').forEach(function(a){
+        var content = a.getAttribute('data-cta') || 'buy';
+        var finalParams = new URLSearchParams(utm);
+        finalParams.set('utm_content', content);
+        var href = BASE + (finalParams.toString() ? '?' + finalParams.toString() : '');
+        a.setAttribute('href', href);
+      });
+    })();
+
+</script>
+</body>
+</html>
