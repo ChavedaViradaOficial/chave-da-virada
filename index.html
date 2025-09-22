@@ -2,103 +2,205 @@
 <html lang="pt-br">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>CHAVE DA VIRADA – Ritual Anticaos • Autoconfiança (Método 3x3 + E‑book)</title>
 <meta name="theme-color" content="#0b0b0e">
 <style>
+  /* Base */
   * { box-sizing: border-box; }
   html, body { height: 100%; }
-  body { margin: 0; background: radial-gradient(80% 50% at 50% 0%, rgba(212,175,55,0.06), transparent 60%), #0b0b0e; color: #f7f7fb; font-family: system-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,Cantarell,Noto Sans,sans-serif; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: radial-gradient(80% 50% at 50% 0%, rgba(212,175,55,0.06), transparent 60%), #0b0b0e;
+    color: #f7f7fb;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Ubuntu, Cantarell, Noto Sans, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    line-height: 1.45;
+  }
   a { color: inherit; text-decoration: none; }
   img { max-width: 100%; display: block; height: auto; }
 
-  :root { --surface:#121218; --muted:#a9abb3; --gold:#d4af37; --ring:rgba(212,175,55,.45); --radius:20px; --shadow:0 24px 60px rgba(0,0,0,.45); --maxw:1120px; }
+  :root {
+    --surface:#121218; --muted:#a9abb3; --gold:#d4af37; --ring:rgba(212,175,55,.45);
+    --radius:20px; --shadow:0 24px 60px rgba(0,0,0,.45); --maxw:1120px;
+  }
 
-  .header{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 24px;background:linear-gradient(180deg,rgba(11,11,14,.85),rgba(11,11,14,.55) 70%,rgba(11,11,14,0));backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.05)}
-  .brand{display:flex;align-items:center;gap:12px}.brand .name{font-weight:900;text-transform:uppercase;letter-spacing:1.2px;background:linear-gradient(90deg,#f5e6b3,#d4af37,#b8860b);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-  .nav{display:flex;gap:16px;align-items:center}.nav a{padding:10px 12px;border-radius:10px;border:1px solid transparent}.nav a:hover{border-color:rgba(212,175,55,.35);color:var(--gold)}
-  .cta-header{display:flex;gap:12px}
+  /* Header */
+  .header{
+    position:sticky; top:0; z-index:20;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    padding:12px 16px;
+    background:linear-gradient(180deg,rgba(11,11,14,.92),rgba(11,11,14,.55) 70%,rgba(11,11,14,0));
+    backdrop-filter: blur(8px);
+    border-bottom:1px solid rgba(255,255,255,.05);
+  }
+  .brand{display:flex; align-items:center; gap:12px}
+  .brand .name{
+    font-weight:900; text-transform:uppercase; letter-spacing:1.2px;
+    background:linear-gradient(90deg,#f5e6b3,#d4af37,#b8860b);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    font-size: clamp(0.9rem, 2.2vw, 1.05rem);
+  }
+  .brand img{ width:36px; height:36px; }
 
-  .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 18px;border-radius:14px;background:#0f0f15;border:1px solid rgba(212,175,55,.35);box-shadow:0 8px 24px rgba(0,0,0,.35)}
+  /* Desktop nav + CTA group */
+  .nav{display:flex; gap:8px; align-items:center}
+  .nav a{padding:10px 12px; border-radius:10px; border:1px solid transparent}
+  .nav a:hover{border-color:rgba(212,175,55,.35); color:var(--gold)}
+
+  .cta-header{display:flex; gap:10px; align-items:center}
+
+  /* Mobile menu button */
+  .menu-btn{
+    display:none; border:1px solid rgba(255,255,255,.1);
+    background:#14141b; color:#f7f7fb; border-radius:12px;
+    padding:10px 12px; line-height:1; font-weight:600;
+  }
+  .menu-btn:focus-visible{ outline:2px solid var(--gold); outline-offset:2px; }
+
+  /* Mobile flyout */
+  .mobile-nav{
+    display:none; flex-direction:column; gap:6px; padding:12px;
+    border-top:1px solid rgba(255,255,255,.08);
+    background:#0f0f15;
+  }
+  .mobile-nav a{
+    padding:12px; border-radius:12px;
+    border:1px solid rgba(255,255,255,.08);
+    background:#14141b;
+  }
+
+  /* Buttons */
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:14px 18px; border-radius:14px; background:#0f0f15;
+    border:1px solid rgba(212,175,55,.35);
+    box-shadow:0 8px 24px rgba(0,0,0,.35);
+    font-weight:800; letter-spacing:.2px;
+    font-size: clamp(0.95rem, 2.5vw, 1rem);
+  }
   @keyframes goldSweep{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-  .btn{background-image:linear-gradient(90deg,#b8860b,#d4af37,#f5e6b3,#d4af37,#b8860b);background-size:300% 100%;animation:goldSweep 4s ease-in-out infinite;color:#0b0b0e;border-color:rgba(212,175,55,.65);box-shadow:0 8px 24px rgba(212,175,55,.25)}
-  .btn:hover{filter:brightness(1.05);box-shadow:0 14px 36px rgba(212,175,55,.40),0 0 0 3px rgba(212,175,55,.25);color:#0b0b0e}
+  .btn{
+    background-image:linear-gradient(90deg,#b8860b,#d4af37,#f5e6b3,#d4af37,#b8860b);
+    background-size:300% 100%;
+    animation:goldSweep 4s ease-in-out infinite;
+    color:#0b0b0e; border-color:rgba(212,175,55,.65);
+    box-shadow:0 8px 24px rgba(212,175,55,.25);
+    min-height:44px; /* touch target */
+  }
+  .btn:hover{filter:brightness(1.05); box-shadow:0 14px 36px rgba(212,175,55,.40),0 0 0 3px rgba(212,175,55,.25); color:#0b0b0e}
 
-  .container{width:100%;max-width:var(--maxw);margin:0 auto;padding:24px}
-  .split{display:grid;grid-template-columns:1.35fr 1fr;gap:32px;align-items:center}
-  @media (max-width:980px){.split{grid-template-columns:1fr}}
+  /* Reduced motion preference */
+  @media (prefers-reduced-motion: reduce){
+    .btn{ animation: none; }
+    * { scroll-behavior: auto !important; }
+  }
 
-  .hero{padding:48px 0}
-  .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;border:1px solid rgba(212,175,55,.35);background:linear-gradient(180deg,rgba(212,175,55,.08),rgba(212,175,55,.02));color:var(--gold);font-weight:600;font-size:.9rem}
-  .h1{margin:14px 0 8px;font-weight:900;line-height:1.05;font-size:3rem;background:linear-gradient(90deg,#f5e6b3,#d4af37,#b8860b);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-  .lead{font-size:1.2rem;color:#ead89d;max-width:56ch}.sub{color:var(--muted)}
+  /* Layout helpers */
+  .container{ width:100%; max-width:var(--maxw); margin:0 auto; padding:24px 16px; }
+  .split{ display:grid; grid-template-columns:1.35fr 1fr; gap:32px; align-items:center }
+  @media (max-width:980px){ .split{ grid-template-columns:1fr; } }
 
-  .trust{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
-  @media (max-width:720px){.trust{grid-template-columns:1fr}}
-  .trust .item{display:flex;align-items:center;gap:8px;background:#14141b;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:10px 12px;color:#e8daa1}
+  /* Hero / Typography */
+  .hero{ padding: clamp(28px, 6vw, 56px) 0 }
+  .pill{
+    display:inline-flex; align-items:center; gap:8px; padding:6px 10px;
+    border-radius:999px; border:1px solid rgba(212,175,55,.35);
+    background:linear-gradient(180deg,rgba(212,175,55,.08),rgba(212,175,55,.02));
+    color:var(--gold); font-weight:600; font-size: clamp(.78rem, 2.2vw, .9rem)
+  }
+  .h1{
+    margin:14px 0 8px; font-weight:900; line-height:1.08;
+    font-size: clamp(1.6rem, 5.5vw, 3rem);
+    background:linear-gradient(90deg,#f5e6b3,#d4af37,#b8860b);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent
+  }
+  .lead{ font-size: clamp(1rem, 2.8vw, 1.2rem); color:#ead89d; max-width: 62ch }
+  .sub{ color: var(--muted) }
 
-  .mock{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,0)),var(--surface);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;display:grid;gap:14px}
-  .mock .row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+  .trust{
+    display:grid; grid-template-columns: repeat(3,1fr); gap:10px; margin-top:14px
+  }
+  @media (max-width:720px){ .trust{ grid-template-columns:1fr } }
+  .trust .item{
+    display:flex; align-items:center; gap:8px; background:#14141b;
+    border:1px solid rgba(255,255,255,.08); border-radius:12px; padding:12px; color:#e8daa1
+  }
 
-  .section{padding:48px 0}
-  .title{font-weight:800;font-size:2rem;margin:0 0 10px}
-  .eyebrow{color:var(--gold);text-transform:uppercase;letter-spacing:1.5px;font-weight:700;font-size:.9rem}
-  .card{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,0)),var(--surface);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
-  .card.compacto{gap:6px;padding:16px}
+  .mock{ background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,0)),var(--surface);
+         border:1px solid rgba(255,255,255,.06); border-radius:var(--radius);
+         box-shadow:var(--shadow); padding:20px; display:grid; gap:14px }
+  .mock .row{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px }
 
-  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-  @media (max-width:980px){.grid-3{grid-template-columns:1fr}}
+  .section{ padding: clamp(32px, 6vw, 56px) 0 }
+  .title{ font-weight:800; font-size: clamp(1.4rem, 4.5vw, 2rem); margin:0 0 10px }
+  .eyebrow{ color:var(--gold); text-transform:uppercase; letter-spacing:1.5px; font-weight:700; font-size: .9rem }
+  .card{ background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,0)),var(--surface);
+         border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); padding:20px; box-shadow:var(--shadow) }
+  .card.compacto{ gap:6px; padding:16px }
 
-  .li{display:flex;align-items:flex-start;gap:12px}
-  .li .ico{width:22px;height:22px;display:grid;place-items:center;color:var(--gold)}
+  .grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px }
+  @media (max-width:980px){ .grid-3{ grid-template-columns:1fr } }
 
-  .twocol{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-  @media (max-width:980px){.twocol{grid-template-columns:1fr}}
-  .list{display:flex;flex-direction:column;gap:8px}
-  .list .row{display:flex;gap:10px;align-items:flex-start}
-  .list .dot{width:18px;height:18px;display:grid;place-items:center;border-radius:50%;background:#14141b;border:1px solid rgba(212,175,55,.35);color:var(--gold);font-size:.8rem;flex:0 0 18px;margin-top:2px}
+  .li{ display:flex; align-items:flex-start; gap:12px }
+  .li .ico{ width:22px; height:22px; display:grid; place-items:center; color:var(--gold) }
 
-  .guarantee{display:flex;gap:16px;align-items:flex-start;border-left:4px solid var(--gold)}
-  .cta-final{text-align:center}
+  .twocol{ display:grid; grid-template-columns:1fr 1fr; gap:20px }
+  @media (max-width:980px){ .twocol{ grid-template-columns:1fr } }
+  .list{ display:flex; flex-direction:column; gap:8px }
+  .list .row{ display:flex; gap:10px; align-items:flex-start }
+  .list .dot{ width:18px; height:18px; display:grid; place-items:center; border-radius:50%;
+              background:#14141b; border:1px solid rgba(212,175,55,.35); color:var(--gold); font-size:.8rem; flex:0 0 18px; margin-top:2px }
 
-  footer{padding:24px;text-align:center;color:#9fa1a9}
-  footer .socials{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:8px}
-  .sbtn{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:#14141b}
+  .guarantee{ display:flex; gap:16px; align-items:flex-start; border-left:4px solid var(--gold) }
+  .cta-final{ text-align:center }
+
+  footer{ padding:24px; text-align:center; color:#9fa1a9 }
+  footer .socials{ display:flex; align-items:center; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:8px }
+  .sbtn{ display:inline-flex; align-items:center; gap:8px; padding:10px 12px; border-radius:12px;
+         border:1px solid rgba(255,255,255,.08); background:#14141b; min-height:44px }
 
   /* Product Switcher */
-  .switcher{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;align-items:stretch}
-  .product-card{display:flex;flex-direction:column;gap:12px;border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,0)),var(--surface);padding:20px;box-shadow:var(--shadow)}
-  .product-card .h2{font-size:1.6rem;font-weight:800;margin:0}
-  .product-card .mini{font-size:.95rem;color:#ead89d}
-  .product-card .cta{display:flex;gap:10px;flex-wrap:wrap}
-  .badge{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;border:1px solid rgba(212,175,55,.35);color:#d4af37;background:rgba(212,175,55,.08);font-weight:600;font-size:.85rem}
+  .switcher{ display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:20px; align-items:stretch }
+  .product-card{ display:flex; flex-direction:column; gap:12px; border:1px solid rgba(255,255,255,.08); border-radius:var(--radius);
+                 background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,0)),var(--surface); padding:20px; box-shadow:var(--shadow) }
+  .product-card .h2{ font-size: clamp(1.2rem, 3.8vw, 1.6rem); font-weight:800; margin:0 }
+  .product-card .mini{ font-size: .95rem; color:#ead89d }
+  .product-card .cta{ display:flex; gap:10px; flex-wrap:wrap }
+  .badge{ display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border-radius:999px;
+          border:1px solid rgba(212,175,55,.35); color:#d4af37; background:rgba(212,175,55,.08); font-weight:600; font-size:.85rem }
 
   /* Separador dourado */
-  .hr-gold{border:0;height:2px;background:linear-gradient(90deg, rgba(212,175,55,0) 0%, rgba(212,175,55,0.8) 50%, rgba(212,175,55,0) 100%);margin:40px 0}
+  .hr-gold{ border:0; height:2px; background:linear-gradient(90deg, rgba(212,175,55,0) 0%, rgba(212,175,55,0.8) 50%, rgba(212,175,55,0) 100%); margin:40px 0 }
 
-  /* Responsivo extra */
-  @media (max-width:640px){
-    .header{padding:12px 14px;flex-wrap:wrap;gap:10px}
-    .brand img{width:34px;height:34px}
-    .brand .name{font-size:.95rem;letter-spacing:1px}
-    .cta-header{width:100%;display:grid;grid-template-columns:1fr;gap:8px}
-    .cta-header .btn{width:100%;justify-content:center;padding:12px}
-    .container{padding:16px}
-    .h1{font-size:1.9rem;line-height:1.1}
-    .lead{font-size:.98rem}
-    .pill{font-size:.8rem;padding:5px 9px}
-    .split{grid-template-columns:1fr;gap:20px}
-    .mock{padding:16px}
-    .grid-3{grid-template-columns:1fr}
+  /* Extra small phones fixes */
+  @media (max-width:400px){
+    .header{ gap:8px }
+    .brand img{ width:32px; height:32px }
+    .cta-header .btn{ padding:12px 14px }
+  }
+
+  /* Mobile layout behaviors */
+  @media (max-width:920px){
+    .nav{ display:none; }
+    .cta-header{ display:none; }
+    .menu-btn{ display:inline-flex; }
+    .mobile-nav.open{ display:flex; }
+    .mobile-nav .cta-wrap{ display:grid; gap:8px; grid-template-columns:1fr; }
+    .mobile-nav .btn{ width:100%; justify-content:center; }
   }
 </style>
 </head>
 <body>
   <header class="header" aria-label="Topo do site">
     <div class="brand">
-      <img src="Logotipo da Chave da Virada.png" alt="Logotipo dourado Chave da Virada" width="40" height="40" />
+      <img src="Logotipo da Chave da Virada.png" alt="Logotipo dourado Chave da Virada" width="40" height="40" loading="lazy" />
       <strong class="name">CHAVE DA VIRADA</strong>
     </div>
+
+    <!-- Desktop nav -->
     <nav class="nav" aria-label="Seções">
       <a href="#ritual">Ritual Anticaos</a>
       <a href="#autoconfianca">Autoconfiança</a>
@@ -106,11 +208,30 @@
       <a href="#conteudo">Conteúdo</a>
       <a href="#beneficios">Benefícios</a>
     </nav>
+
     <nav class="cta-header" aria-label="Ações principais">
-  <a class="btn" href="https://pay.kiwify.com.br/BL3HMoL" data-product="autoconfianca" data-cta="header-autoconfianca">Novo: Autoconfiança</a>
-  <a class="btn" href="https://pay.kiwify.com.br/XABy9g3" data-product="ritual" href="https://pay.kiwify.com.br/XABy9g3" data-cta="header-cta">Ritual Anticaos</a>
-</nav>
+      <a class="btn" href="https://pay.kiwify.com.br/BL3HMoL" data-product="autoconfianca" data-cta="header-autoconfianca" rel="noopener noreferrer">Novo: Autoconfiança</a>
+      <a class="btn" href="https://pay.kiwify.com.br/XABy9g3" data-product="ritual" data-cta="header-cta" rel="noopener noreferrer">Ritual Anticaos</a>
+    </nav>
+
+    <!-- Mobile controls -->
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileNav" aria-label="Abrir menu">
+      ☰ Menu
+    </button>
   </header>
+
+  <!-- Mobile flyout navigation -->
+  <nav id="mobileNav" class="mobile-nav" aria-label="Menu móvel">
+    <a href="#ritual">Ritual Anticaos</a>
+    <a href="#autoconfianca">Autoconfiança</a>
+    <a href="#metodo-autoconfianca">Método Autoconfiança</a>
+    <a href="#conteudo">Conteúdo</a>
+    <a href="#beneficios">Benefícios</a>
+    <div class="cta-wrap" aria-label="Ações principais">
+      <a class="btn" href="https://pay.kiwify.com.br/XABy9g3" data-product="ritual" rel="noopener noreferrer">Comprar Ritual Anticaos</a>
+      <a class="btn" href="https://pay.kiwify.com.br/BL3HMoL" data-product="autoconfianca" rel="noopener noreferrer">Comprar Autoconfiança</a>
+    </div>
+  </nav>
 
   <main>
     <!-- HERO RITUAL ANTICAOS -->
@@ -131,9 +252,9 @@
             <a class="btn" href="#conteudo">Ver o que vou receber</a>
           </div>
         </div>
-        <aside class="mock">
+        <aside class="mock" aria-label="Prévia visual do material">
           <div class="sub">Visual do material</div>
-          <img src="Logotipo da Chave da Virada.png" alt="Mockup (ilustração)">
+          <img src="Logotipo da Chave da Virada.png" alt="Mockup (ilustração)" loading="lazy">
           <div class="row">
             <div class="card compacto"><strong>E-book Ritual Anticaos</strong><br><span class="sub">Método 3x3 • Passo a passo prático</span></div>
             <div class="card compacto"><strong>Passo a Passo para Construir Alta Confiança</strong><br><span class="sub">E‑book premium • Desenvolvimento prático</span></div>
@@ -160,8 +281,8 @@
               <li>Bônus opcional: Checklist Anti-Procrastinação</li>
             </ul>
             <div class="cta">
-  <a class="btn" href="https://pay.kiwify.com.br/XABy9g3" data-product="ritual" rel="noopener noreferrer">Quero meu Anticaos</a>
-</div>
+              <a class="btn" href="https://pay.kiwify.com.br/XABy9g3" data-product="ritual" rel="noopener noreferrer">Quero meu Anticaos</a>
+            </div>
           </article>
           <!-- Produto 2 -->
           <article class="product-card" id="autoconfianca">
@@ -174,7 +295,7 @@
               <li>Plano de desenvolvimento por etapas (semanas 1‑4, mês 2 e 3)</li>
             </ul>
             <div class="cta">
-              <a class="btn" data-product="autoconfianca" data-cta="catalogo-autoconfianca" href="https://pay.kiwify.com.br/BL3HMoL">Quero minha autoconfiança</a>
+              <a class="btn" data-product="autoconfianca" data-cta="catalogo-autoconfianca" href="https://pay.kiwify.com.br/BL3HMoL" rel="noopener noreferrer">Quero minha autoconfiança</a>
             </div>
           </article>
           <!-- Produto 3: Checklist Anti-Procrastinação -->
@@ -188,11 +309,9 @@
               <li>Destrave sua ação em minutos</li>
             </ul>
             <div class="cta">
-              <a class="btn" href="https://pay.kiwify.com.br/kogNSqV" data-cta="catalogo-checklist">Quero meu Checklist</a>
+              <a class="btn" href="https://pay.kiwify.com.br/kogNSqV" data-cta="catalogo-checklist" rel="noopener noreferrer">Quero meu Checklist</a>
             </div>
           </article>
-
-        
         </div>
       </div>
     </section>
@@ -234,7 +353,9 @@
         <h2 class="title">O que você vai receber</h2>
         <div class="grid-3" style="margin-top:12px">
           <div class="card compacto"><h3>E‑book Ritual Anticaos (Método 3x3)</h3><p class="sub">Guia completo com instruções, exemplos práticos e plano de 7 dias.</p></div>
-          <div class="card compacto"><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span class="badge">Nova oferta</span></div><h3>E‑book: Passo a Passo para Autoconfiança</h3><p class="sub">Fundamentos, ferramentas e estratégias para autoconfiança inabalável.</p></div>
+          <div class="card compacto">
+            <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span class="badge">Nova oferta</span></div>
+            <h3>E‑book: Passo a Passo para Autoconfiança</h3><p class="sub">Fundamentos, ferramentas e estratégias para autoconfiança inabalável.</p></div>
           <div class="card compacto"><h3>Checklist Anti‑Procrastinação (opcional)</h3><p class="sub">20 gatilhos prontos para sair da paralisia e agir imediatamente.</p></div>
         </div>
       </div>
@@ -246,8 +367,20 @@
         <div class="eyebrow">Clareza</div>
         <h2 class="title">Para quem é — e para quem não é</h2>
         <div class="twocol" style="margin-top:12px">
-          <div class="card compacto"><h3>É para você se…</h3><div class="list"><div class="row"><span class="dot">✅</span><p class="sub">Você procrastina e falta clareza.</p></div><div class="row"><span class="dot">✅</span><p class="sub">Quer um método simples que caiba no dia.</p></div><div class="row"><span class="dot">✅</span><p class="sub">Topa aplicar 7 minutos por dia.</p></div></div></div>
-          <div class="card compacto"><h3>Não é para você se…</h3><div class="list"><div class="row"><span class="dot">⛔</span><p class="sub">Busca fórmula mágica sem ação.</p></div><div class="row"><span class="dot">⛔</span><p class="sub">Prefere teoria sem prática.</p></div><div class="row"><span class="dot">⛔</span><p class="sub">Não quer reservar nem 7 minutos.</p></div></div></div>
+          <div class="card compacto"><h3>É para você se…</h3>
+            <div class="list">
+              <div class="row"><span class="dot">✅</span><p class="sub">Você procrastina e falta clareza.</p></div>
+              <div class="row"><span class="dot">✅</span><p class="sub">Quer um método simples que caiba no dia.</p></div>
+              <div class="row"><span class="dot">✅</span><p class="sub">Topa aplicar 7 minutos por dia.</p></div>
+            </div>
+          </div>
+          <div class="card compacto"><h3>Não é para você se…</h3>
+            <div class="list">
+              <div class="row"><span class="dot">⛔</span><p class="sub">Busca fórmula mágica sem ação.</p></div>
+              <div class="row"><span class="dot">⛔</span><p class="sub">Prefere teoria sem prática.</p></div>
+              <div class="row"><span class="dot">⛔</span><p class="sub">Não quer reservar nem 7 minutos.</p></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -279,8 +412,8 @@
 
     <!-- GARANTIA -->
     <section class="section" id="garantia">
-      <div class="container card guarantee">
-        <div style="font-size:1.8rem; line-height:1">🛡️</div>
+      <div class="container card guarantee" role="note">
+        <div style="font-size:1.8rem; line-height:1" aria-hidden="true">🛡️</div>
         <div>
           <h2 class="title" style="margin:0">Garantia incondicional de 7 dias</h2>
           <p class="sub">Teste sem risco. Se não sentir diferença, devolvemos 100%.</p>
@@ -312,7 +445,10 @@
   </footer>
 
   <script>
+    // Atualiza ano
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // UTM builder
     (function(){
       var urlParams = new URLSearchParams(window.location.search);
       var utm = new URLSearchParams();
@@ -322,8 +458,36 @@
       urlParams.forEach(function(v,k){ if(/^utm_/.test(k)||k==='gclid'||k==='fbclid') utm.set(k,v); });
       var RITUAL = "https://pay.kiwify.com.br/XABy9g3";
       var AUTO = "https://pay.kiwify.com.br/BL3HMoL";
-      document.querySelectorAll('a[data-product=\"ritual\"]').forEach(function(a){ var c=a.getAttribute('data-cta')||'buy_ritual'; var p=new URLSearchParams(utm); p.set('utm_content',c); a.href=RITUAL+(p.toString()?'?'+p.toString():''); });
-      document.querySelectorAll('a[data-product=\"autoconfianca\"]').forEach(function(a){ var c=a.getAttribute('data-cta')||'buy_autoconfianca'; var p=new URLSearchParams(utm); p.set('utm_content',c); a.href=AUTO+(p.toString()?'?'+p.toString():''); });
+      document.querySelectorAll('a[data-product="ritual"]').forEach(function(a){
+        var c=a.getAttribute('data-cta')||'buy_ritual';
+        var p=new URLSearchParams(utm); p.set('utm_content',c);
+        a.href=RITUAL+(p.toString()?'?'+p.toString():'');
+      });
+      document.querySelectorAll('a[data-product="autoconfianca"]').forEach(function(a){
+        var c=a.getAttribute('data-cta')||'buy_autoconfianca';
+        var p=new URLSearchParams(utm); p.set('utm_content',c);
+        a.href=AUTO+(p.toString()?'?'+p.toString():'');
+      });
+    })();
+
+    // Mobile menu toggle
+    (function(){
+      var btn = document.getElementById('menuBtn');
+      var nav = document.getElementById('mobileNav');
+      if (!btn || !nav) return;
+      function closeOnHash(){
+        btn.setAttribute('aria-expanded','false');
+        nav.classList.remove('open');
+      }
+      btn.addEventListener('click', function(){
+        var open = nav.classList.toggle('open');
+        btn.setAttribute('aria-expanded', String(open));
+      });
+      nav.querySelectorAll('a').forEach(function(a){
+        a.addEventListener('click', function(){
+          if (a.hash) closeOnHash();
+        });
+      });
     })();
   </script>
 </body>
